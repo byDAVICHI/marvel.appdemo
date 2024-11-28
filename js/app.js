@@ -5,9 +5,9 @@ var swLocation='sw.js';
 // AGREGAR BLOQUE 1
 // Solo registrar el service worker si estamos en localhost o en producción (HTTP/HTTPS)
 if (navigator.serviceWorker && window.location.protocol === 'http:' || window.location.protocol === 'https:') {
-    var swLocation = 'sw.js';
+    var swLocation = '/sw.js';
     if (url.includes('localhost')) {
-        swLocation = 'sw.js';  // Ajuste para el entorno local
+        swLocation = '/sw.js';  // Ajuste para el entorno local
     }
     navigator.serviceWorker.register(swLocation).catch(error => {
         console.error("Error al registrar el Service Worker:", error);
