@@ -190,6 +190,30 @@ header button:hover {
   transform: scale(1.1);
 }
 
+/* Character Selection Section */
+#seleccion {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#seleccion img {
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#seleccion img:hover {
+  transform: scale(1.1);
+}
+
+#seleccion h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   body {
@@ -198,5 +222,22 @@ header button:hover {
 
   #modal {
     width: 95%;
+  }
+
+  header.app-header h1 {
+    font-size: 1.5em;
+  }
+
+  .fab,
+  .fab-marker,
+  .fab-photo {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  #seleccion img {
+    width: 60px;
+    height: 60px;
   }
 }
