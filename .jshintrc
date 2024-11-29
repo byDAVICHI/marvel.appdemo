@@ -72,7 +72,7 @@
         "$"     : true,
         "self"  : true,
         "caches": true,
-        // AGREGAR EN EL SEGUNDO BLOQUE
-        "importScripts":true
+        //agregar en el segundo bloque
+        "importScripts": true       
     }
 }

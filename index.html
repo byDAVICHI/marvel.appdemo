@@ -4,57 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gestor de Notas</title>
+    <title>Marvel</title>
 
     <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animate.css">
 
     <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
+
     <link rel="manifest" href="manifest.json">
 
-    <!-- Android -->
     <meta name="theme-color" content="#3498db">
+
 </head>
 <body>
-    <!-- Header -->
-    <header class="app-header">
-        <h1 id="titulo">Gestor de Notas <i class="fa fa-sticky-note"></i></h1>
-        <button id="nuevo-btn" class="fa fa-plus new oculto animated fadeIn fast"></button>
-        <button id="salir-btn" class="fa fa-sign-out-alt out oculto animated fadeIn"></button>
-    </header>
+        <!-- Titulo -->
+        <span class="first"> 
+            <span id="salir-btn" class="fa fa-sign-out-alt out oculto animated fadeIn"></span>
+            <span id="titulo">Seleccione Personaje
+                <i class="fa fa-user"></i>
+            </span>
+            <span id="nuevo-btn" class="fa fa-pen-square new oculto animated fadeIn fast"></span>
+        </span>
+        <!-- Fin Titulo -->
 
-    <!-- Modal para nueva nota -->
-    <div id="modal" class="oculto">
-        <h2 id="titulo-modal">Nueva Nota</h2>
-        <textarea id="txtMensaje" placeholder="Escribe tu nota..." rows="5"></textarea>
-        <div class="modal-buttons">
-            <button id="post-btn" class="fab"><i class="fa fa-paper-plane"></i></button>
-            <button id="cancel-btn" class="fab"><i class="fa fa-times"></i></button>
-        </div>
-    </div>
+        <!-- Modal -->
+        <div id="modal" class="oculto">
+            <img id="modal-avatar" src="img/avatars/venom.jpg">
 
-    <!-- Contenedor para las notas -->
-    <main>
-        <section id="seleccion" class="seleccion animated fadeIn fast">
-            <h2>Selecciona un personaje:</h2>
-            <div>
-                <img data-user="venom" src="img/avatars/venom.jpg" alt="VENOM" class="seleccion-avatar">
-                <img data-user="punisher" src="img/avatars/punisher.jpg" alt="PUNISHER" class="seleccion-avatar">
-                <img data-user="ghostrider" src="img/avatars/ghostrider.jpg" alt="GHOST RIDER" class="seleccion-avatar">
-                <img data-user="wolverine" src="img/avatars/wolverine.jpg" alt="WOLVERINE" class="seleccion-avatar">
-                <img data-user="deadpool" src="img/avatars/deadpool.jpg" alt="DEADPOOL" class="seleccion-avatar">
-                <img data-user="greengoblin" src="img/avatars/greengoblin.jpg" alt="GREEN GOBLIN" class="seleccion-avatar">
-                <img data-user="carnage" src="img/avatars/carnage.jpg" alt="CARNAGE" class="seleccion-avatar">
+            <span class="first"> 
+                <span id="titulo-modal">Nuevo mensaje</span>
+                <span id="cancel-btn" class="fa fa-times"></span>
+            </span>
+            
+
+            <div class="nuevo-mensaje">
+                <textarea id="txtMensaje" placeholder="Nuevo mensaje..." rows="5"></textarea>
             </div>
-        </section>
 
+            
+            <!-- boton de enviar -->
+
+            <div id="post-btn" class="fab">
+                <i class="fa fa-paper-plane"></i>
+            </div>
+
+            <div id="post-btn" class="fab-marker">
+                <i class="fa fa-map-marker-alt"></i>
+            </div>
+
+            <div id="post-btn" class="fab-photo">
+                <i class="fa fa-image"></i>
+            </div>
+
+        </div>
+        <!-- Fin Modal -->
+
+
+        <!-- Seleccion de personaje -->
+        <div id="seleccion" class="seleccion animated fadeIn fast" align="center">
+        
+            <img data-user="venom" src="img/avatars/venom.jpg" alt="VENOM" class="seleccion-avatar">
+            <img data-user="punisher" src="img/avatars/punisher.jpg" alt="PUNISHER" class="seleccion-avatar">
+            <img data-user="ghostrider" src="img/avatars/ghostrider.jpg" alt="GHOST RIDER" class="seleccion-avatar">
+            <img data-user="wolverine" src="img/avatars/wolverine.jpg" alt="WOLVERINE" class="seleccion-avatar">
+            <img data-user="deadpool" src="img/avatars/deadpool.jpg" alt="DEADPOOL" class="seleccion-avatar">
+            <img data-user="greengoblin" src="img/avatars/greengoblin.jpg" alt="GREEN GOBLIN" class="seleccion-avatar">
+            <img data-user="carnage" src="img/avatars/carnage.jpg" alt="CARNAGE" class="seleccion-avatar">
+
+        </div>
+
+        <!-- FIN Seleccion de personaje -->
+
+        <!-- Lista de mensajes -->
         <ul id="timeline" class="timeline oculto">
-            <!-- Las notas aparecerán aquí -->
+            
+            <!-- Mensaje -->
             <li class="animated fadeIn fast">
                 <div class="avatar">
                     <img src="img/avatars/venom.jpg">
@@ -65,15 +93,20 @@
                         <br/>
                         WE ARE VENOM!
                     </div>
+                    
                     <div class="arrow"></div>
                 </div>
             </li>
+            <!-- Fin del mensaje -->
+
         </ul>
-    </main>
+        <!-- Fin Lista de mensajes -->
 
-    <script src="js/libs/jquery.js"></script>
-    <script src="js/app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+      
+    
+        <script src="js/libs/jquery.js"></script>
+        <script src="js/app.js"></script>
+    
 </body>
 </html>
