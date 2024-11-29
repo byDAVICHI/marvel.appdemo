@@ -1,11 +1,8 @@
-// sw producción
-var url = window.location.href;
-var swLocation = 'sw.js';
-
-// Registrar el service worker solo si el protocolo es HTTP/HTTPS
+// Registrar el Service Worker
 if (navigator.serviceWorker && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
-    if (url.includes('localhost')) {
-        swLocation = 'sw.js'; // Ajuste para entorno local
+    let swLocation = 'sw.js';
+    if (window.location.href.includes('localhost')) {
+        swLocation = 'sw.js';
     }
     navigator.serviceWorker.register(swLocation).catch(error => {
         console.error("Error al registrar el Service Worker:", error);
@@ -13,26 +10,24 @@ if (navigator.serviceWorker && (window.location.protocol === 'http:' || window.l
 }
 
 // Referencias de jQuery
-var titulo = $('#titulo');
-var nuevoBtn = $('#nuevo-btn');
-var salirBtn = $('#salir-btn');
-var cancelarBtn = $('#cancel-btn');
-var postBtn = $('#post-btn');
-var avatarSel = $('#seleccion');
-var timeline = $('#timeline');
+const titulo = $('#titulo');
+const nuevoBtn = $('#nuevo-btn');
+const salirBtn = $('#salir-btn');
+const cancelarBtn = $('#cancel-btn');
+const postBtn = $('#post-btn');
+const avatarSel = $('#seleccion');
+const timeline = $('#timeline');
+const modal = $('#modal');
+const modalAvatar = $('#modal-avatar');
+const avatarBtns = $('.seleccion-avatar');
+const txtMensaje = $('#txtMensaje');
 
-var modal = $('#modal');
-var modalAvatar = $('#modal-avatar');
-var avatarBtns = $('.seleccion-avatar');
-var txtMensaje = $('#txtMensaje');
+// Usuario seleccionado
+let usuario = null;
 
-// El usuario, contiene el ID del héroe seleccionado
-var usuario = null;
-
-// Crear un nuevo mensaje y agregarlo al timeline
+// Crear mensaje HTML
 function crearMensajeHTML(mensaje, personaje) {
-    // Plantilla del mensaje
-    var content = `
+    const content = `
         <li class="animated fadeIn fast">
             <div class="avatar">
                 <img src="img/avatars/${personaje}.jpg">
@@ -47,13 +42,9 @@ function crearMensajeHTML(mensaje, personaje) {
             </div>
         </li>
     `;
-
-    // Agregar el mensaje al inicio del timeline
     timeline.prepend(content);
-
-    // Limpiar el campo de texto y cerrar el modal
-    txtMensaje.val('');
-    cancelarBtn.click();
+    txtMensaje.val(''); // Limpiar mensaje
+    cancelarBtn.click(); // Cerrar modal
 }
 
 // Manejo de inicio de sesión
@@ -63,13 +54,13 @@ function logIn(ingreso) {
         salirBtn.removeClass('oculto');
         timeline.removeClass('oculto');
         avatarSel.addClass('oculto');
-        modalAvatar.attr('src', 'img/avatars/' + usuario + '.jpg');
     } else {
         nuevoBtn.addClass('oculto');
         salirBtn.addClass('oculto');
         timeline.addClass('oculto');
         avatarSel.removeClass('oculto');
         titulo.text('Seleccione Personaje');
+        usuario = null;
     }
 }
 
@@ -87,34 +78,23 @@ salirBtn.on('click', function () {
 
 // Botón de nuevo mensaje
 nuevoBtn.on('click', function () {
-    modal.removeClass('oculto');
-    modal.animate({
-        opacity: 1,
-        top: '50%' // Centrar el modal
-    }, 200);
+    modal.removeClass('oculto').animate({ opacity: 1, top: '50%' }, 200);
 });
 
 // Botón de cancelar mensaje
 cancelarBtn.on('click', function () {
-    modal.animate({
-        marginTop: '+=1000px',
-        opacity: 0
-    }, 200, function () {
+    modal.animate({ marginTop: '+=1000px', opacity: 0 }, 200, function () {
         modal.addClass('oculto');
-        txtMensaje.val(''); // Limpiar el campo de texto
+        txtMensaje.val('');
     });
 });
 
 // Botón de enviar mensaje
 postBtn.off('click').on('click', function () {
-    var mensaje = txtMensaje.val().trim();
-
-    // Validar que el mensaje no esté vacío
-    if (mensaje === '') {
-        cancelarBtn.click();
+    const mensaje = txtMensaje.val().trim();
+    if (!mensaje || !usuario) {
+        alert('Por favor, selecciona un personaje y escribe un mensaje.');
         return;
     }
-
-    // Crear el mensaje en el timeline
     crearMensajeHTML(mensaje, usuario);
 });
