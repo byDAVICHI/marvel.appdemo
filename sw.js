@@ -12,7 +12,7 @@ const APP_SHEEL = [
     'index.html',
     'css/style.css',
     'img/favicon.ico',
-    'img/avatars/Venom.jpg',
+    'img/avatars/venom.jpg',
     'img/avatars/carnage.jpg',
     'img/avatars/greengoblin.jpg',
     'img/avatars/ghostrider.jpg',
