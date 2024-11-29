@@ -26,7 +26,7 @@ const APP_SHELL = [
 const APP_SHELL_INMUTABLE = [
     'https://fonts.googleapis.com/css?family=Quicksand:300,400',
     'https://fonts.googleapis.com/css?family=Lato:400,300',
-    'https://use.fontawesome.com/releases/v5.3.1/css/all.css',
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
     'css/animate.css',
     'js/libs/jquery.js'
 
@@ -78,3 +78,26 @@ self.addEventListener(fetch, e=>{
     });
     e.respondWith(respuesta);
 });
+//
+navigator.serviceWorker.register('/sw.js')
+    .then(reg => {
+        console.log('Service Worker registrado con éxito:', reg);
+    })
+    .catch(err => {
+        console.error('Error al registrar el Service Worker:', err);
+    });
+
+    self.addEventListener('install', event => {
+        console.log('Service Worker instalado');
+    });
+    
+    self.addEventListener('activate', event => {
+        console.log('Service Worker activado');
+    });
+    
+    self.addEventListener('fetch', event => {
+        console.log('Interceptando:', event.request.url);
+    });
+    
+
+    

@@ -1,4 +1,37 @@
 /* Asegúrate de que el modal esté oculto inicialmente */
+.nota {
+  background-color: #f0f0f0; /* Color de fondo de la nota */
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+}
+#modal {
+  display: none;
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  color: white;
+}
+
+#modal.oculto {
+  display: none;
+}
+
+.mensaje {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+#mensajes-container {
+  margin-top: 20px;
+}
+
 #modal.oculto {
   display: none;
   opacity: 0;
