@@ -12,6 +12,12 @@ if (navigator.serviceWorker && (window.location.protocol === 'http:' || window.l
     });
 }
 
+if ( navigator.serviceWorker){
+    if(url.includes('localhost')){
+        swLocation='sw.js'
+    }
+    navigator.serviceWorker.register(swLocation);
+}
 // Referencias de jQuery
 
 var titulo      = $('#titulo');
