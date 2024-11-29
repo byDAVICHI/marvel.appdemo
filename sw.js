@@ -79,25 +79,3 @@ self.addEventListener(fetch, e=>{
     e.respondWith(respuesta);
 });
 //
-navigator.serviceWorker.register('/sw.js')
-    .then(reg => {
-        console.log('Service Worker registrado con éxito:', reg);
-    })
-    .catch(err => {
-        console.error('Error al registrar el Service Worker:', err);
-    });
-
-    self.addEventListener('install', event => {
-        console.log('Service Worker instalado');
-    });
-    
-    self.addEventListener('activate', event => {
-        console.log('Service Worker activado');
-    });
-    
-    self.addEventListener('fetch', event => {
-        console.log('Interceptando:', event.request.url);
-    });
-    
-
-    
