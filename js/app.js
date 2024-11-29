@@ -1,11 +1,13 @@
-// sw producción
-var url = window.location.href;
-var swLocation = 'sw.js';
+//sw produccion
+var url=window.location.href;
+var swLocation='sw.js';
 
-// Registrar el service worker solo si el protocolo es HTTP/HTTPS
-if (navigator.serviceWorker && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
+// AGREGAR BLOQUE 1
+// Solo registrar el service worker si estamos en localhost o en producción (HTTP/HTTPS)
+if (navigator.serviceWorker && window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+    var swLocation = 'sw.js';
     if (url.includes('localhost')) {
-        swLocation = 'sw.js'; // Ajuste para entorno local
+        swLocation = 'sw.js';  // Ajuste para el entorno local
     }
     navigator.serviceWorker.register(swLocation).catch(error => {
         console.error("Error al registrar el Service Worker:", error);
@@ -18,6 +20,7 @@ if ( navigator.serviceWorker){
     }
     navigator.serviceWorker.register(swLocation);
 }
+
 // Referencias de jQuery
 
 var titulo      = $('#titulo');
