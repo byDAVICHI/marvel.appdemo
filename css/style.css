@@ -5,20 +5,26 @@
   margin: 5px 0;
   border: 1px solid #ccc;
 }
+
 #modal {
-  display: none;
-  position: absolute;
+  position: fixed;
   top: -100%;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  color: white;
+  transition: opacity 0.3s, top 0.3s;
 }
 
-#modal.oculto {
-  display: none;
+#modal textarea {
+  width: 90%;
+  height: 100px;
+  margin: 10px auto;
+  display: block;
+}
+
+#modal button {
+  display: block;
+  margin: 10px auto;
 }
 
 .mensaje {
@@ -30,19 +36,6 @@
 
 #mensajes-container {
   margin-top: 20px;
-}
-
-#modal.oculto {
-  display: none;
-  opacity: 0;
-}
-#modal {
-  position: absolute; /* O fixed si prefieres que sea fijo */
-  top: -1000px; /* Empezará fuera de la vista */
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.2s, top 0.2s;
 }
 
 * {
